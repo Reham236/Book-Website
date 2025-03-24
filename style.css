@@ -16,6 +16,7 @@ nav img {
     margin-left: 0; /* Ensures no extra margin on the left */
 }
 nav {
+    position: relative;
     justify-content: flex-start; /* Aligns items to the start (left) of the nav */
 }
 nav ul{
@@ -38,11 +39,56 @@ nav ul li a{
     padding: 10px 15px;
     /* border-radius: 5px; */
 }
-nav ul li a:hover{
-   color: #6f61cf;
-   font-size: 25px;
-    /* border-radius: 5px; */
+nav ul li a:hover {
+    color: #6f61cf;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: scale(1.1);
 }
+#countdown {
+    background-color: #6f61cf;
+    color: white;
+    font-size: 30px;
+    padding: 10px 15px;
+    text-align: center;
+    height: 60%;
+    width: 20%;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    border-radius: 5px;
+    animation: fadeInSlideDown 1.5s ease-in-out;
+}
+
+@keyframes fadeInSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.row{
+    display: flex;
+    /* justify-content: space-around; */
+    padding: 20px;
+    align-items: center;
+    margin-top: 20px;
+}
+.row img{
+    width: 120px;
+    height: 120px;
+    
+    border-radius: 50%;
+}
+.fa-star{
+    color: #f1c40f;
+    padding: 5px;
+    /* background-color:    #f1c40f; */
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -64,6 +110,12 @@ nav ul li a:hover{
     nav ul li a {
         font-size: 18px;
     }
+    #countdown {
+        font-size: 24px;
+        width: 30%;
+        height: 20%;
+        right: 5px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -72,7 +124,17 @@ nav ul li a:hover{
         height: 80px;
         transform: scale(1.2);
     }
+    nav ul li{
+        width: 100%;
+    }
     nav ul li a {
         font-size: 16px;
+        
     }
+    #countdown {
+        font-size: 20px;
+        width: 40%;
+        right: 5px;
+    }
+    
 }
