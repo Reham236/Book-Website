@@ -1,73 +1,60 @@
-nav{
-    display: flex;
-    justify-content: center;
-    /* background-color:   #6f61cf; */
-    height: 15vh;
-    
-
-
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
-nav img {
-    display: inline-block;
-    width: 150px;
-    height: 150px;
-    align-self: center;
-    margin-right: 20px;
-    margin-left: 0; /* Ensures no extra margin on the left */
-}
+/* تنسيق القائمة الرئيسية */
 nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 15vh;
+    padding: 0 20px;
     position: relative;
-    justify-content: flex-start; /* Aligns items to the start (left) of the nav */
+    flex-wrap: wrap;
 }
-nav ul{
+
+nav img {
+    width: 120px;
+    height: 120px;
+}
+
+nav ul {
     display: flex;
     list-style: none;
-    margin-top:35px;
     padding: 0;
-    justify-content: center;
-    
+    margin: 0;
 }
-nav ul li{
+
+nav ul li {
     margin: 0 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-nav ul li a{
+
+nav ul li a {
     text-decoration: none;
     color: black;
     font-size: 20px;
     font-weight: bold;
     padding: 10px 15px;
-    /* border-radius: 5px; */
 }
+
 nav ul li a:hover {
     color: #6f61cf;
-    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
     transform: scale(1.1);
 }
+
+/* العداد */
 #countdown {
     background-color: #6f61cf;
     color: white;
-    font-size: 30px;
-    padding: 10px 15px;
+    font-size: 20px;
+    padding: 10px;
     text-align: center;
-    height: 60%;
-    width: 20%;
-    position: absolute;
-    top: 0;
-    right: 10px;
     border-radius: 5px;
-    animation: fadeInSlideDown 1.5s ease-in-out;
-}
-
-@keyframes fadeInSlideDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    position: absolute;
+    right: 20px;
+    top: 10px;
 }
 .row{
     display: flex;
@@ -85,36 +72,397 @@ nav ul li a:hover {
 .fa-star{
     color: #f1c40f;
     padding: 5px;
-    /* background-color:    #f1c40f; */
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+.arrow {
+    font-size: 30px;
+    cursor: pointer;
+    color: #6f61cf;
+    user-select: none;
+    transition: 0.3s;
+}
+.arrow:hover {
+    color: #4b46a4;
+    transform: scale(1.2);
 }
 
-/* Media Queries */
+/* تصميم الحاوية الخاصة بالفئات */
+.categories-container {
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+}
+
+/* تحويل الفئات إلى شريط أفقي قابل للتمرير */
+.categories-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* إخفاء شريط التمرير */
+}
+.categories-slider::-webkit-scrollbar {
+    display: none; /* إخفاء شريط التمرير في Chrome */
+}
+
+/* تصميم كل فئة */
+.category {
+    min-width: 200px;
+    text-align: center;
+}
+.category img {
+width: 180px; /* تحديد العرض لجميع الصور */
+height: 180px; /* تحديد الارتفاع ليكون ثابتًا */
+object-fit: cover; /* يضمن عدم تشويه الصورة مع ملء الإطار */
+border-radius: 10px; /* حواف مستديرة لجمالية التصميم */
+transition: transform 0.3s ease-in-out;
+}
+
+.category img:hover {
+transform: scale(1.05);
+}
+
+.category p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+/* First Section*/
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px;
+    margin-bottom: 20vh;
+    background: linear-gradient(to right, #eeecef, #ffffff,#6f61cf);
+}
+.text-content {
+    margin-bottom: 10;
+
+    width: 40%;
+}
+.text-content h1 {
+    padding-bottom: 5vh;
+    font-size: 2.5rem;
+    
+    color: #4B0082;
+}
+.text-content p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+.hero .btn {
+    margin-left: 20px;
+    background-color: #6f61cf;
+    color: #fcfcfc;
+    border: 2px solid #4B0082;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top:  5vh;
+}
+.hero .btn:hover {
+        border: 2px solid #4B0082;
+
+        background: linear-gradient(to bottom,#fffefe,#6f61cf);
+        color: #4B0082;
+}
+.image-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.image-container img {
+    width: 100%;
+    max-width: 500px;
+    box-shadow:9px 9px 15px rgba(123, 19, 164, 0.3);
+    border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        padding: 50px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        width: 80%;
+    }
+
+    .text-content h1 {
+        font-size: 2rem;
+    }
+
+    .text-content p {
+        font-size: 0.9rem;
+    }
+
+    .hero .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .image-container {
+        width: 70%;
+    }
+}
+
 @media (max-width: 768px) {
+    .hero {
+        padding: 40px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        width: 100%;
+    }
+
+    .text-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .text-content p {
+        font-size: 0.85rem;
+    }
+
+    .hero .btn {
+        font-size: 0.85rem;
+        padding: 7px 14px;
+        margin-left: 0;
+        margin-bottom: 20px;   
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .image-container img {
+        max-width: 100%;
+    }
+}
+
+
+.content {
+    padding: 50px;
+}
+
+/*footer*/
+footer {
+    background: linear-gradient(to right,#eeecef, #eeecef, #6354c7,#6354c7);
+    color: white;
+    padding:0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.footer-logo {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-logo img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    margin-top: 5px;
+}
+
+.footer-links {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+
+}
+
+.footer-links ul li:first-child {
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: block;
+    padding: 12px 0;
+}
+
+.footer-links ul li a:hover {
+    color: #000000;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.social-icons a {
+    display: inline-block;
+    color:#523ed4;
+    font-size: 25px;
+ 
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #6f61cf;
+    font-size: 14px;
+    color: #000000;
+    margin-top: 20px;
+}
+
+/*  sell Section */
+/*  Sell Section */
+#sell {
+    text-align: center;
+    padding: 50px 0;
+}
+
+#sell .row {
+    display: flex;
+    justify-content: center; /* توسيط العناصر */
+    align-items: center;
+    gap: 30px; /* مسافة بين الأعمدة */
+}
+
+#sell .col-md-4 {
+    background-color: #6f61cf;
+    color: white;
+    padding: 40px 30px;
+    border-radius: 10px;
+    font-size: 22px; /* تكبير الخط */
+    font-weight: bold;
+    width: 350px; /* توحيد الحجم */
+    height: 250px; /* جعل الحجم ثابت */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* توسيط النص عمودياً */
+    align-items: center; /* توسيط النص أفقياً */
+    white-space: nowrap; /* منع انقسام النص */
+    transition: box-shadow 0.3s ease-in-out;
+}
+#sell .col-md-4:hover {
+    box-shadow: 0 0 20px #ffffff, 0 0 40px #6f61cf; /* تأثير الإضاءة */
+}
+
+
+#sell p {
+    font-size: inherit;
+    font-weight: inherit;
+
+    margin: 0;
+}
+@keyframes color-change {
+    /* 0% { color: #e65c4f; } */
+    0% { color: #6f61cf; }
+    100% { color: #e65c4f; }
+}
+
+#sell h2 {
+    font-size: 50px; /* حجم الخط */
+    font-weight: bold; /* سمك الخط */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+    animation: color-change .7s infinite alternate;
+}
+
+/* لجعل التصميم متجاوبًا */
+@media (max-width: 992px) {
     nav {
         flex-direction: column;
         align-items: center;
         height: auto;
+        padding-bottom: 10px;
     }
+
     nav img {
         width: 100px;
         height: 100px;
-        margin: 10px 0;
     }
+
     nav ul {
         flex-direction: column;
-        margin-top: 10px;
+        align-items: center;
+        width: 100%;
     }
+
     nav ul li {
         margin: 5px 0;
     }
+
+    #countdown {
+        position: static;
+        width: 80%;
+        margin-top: 10px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    nav img {
+        width: 90px;
+        height: 90px;
+    }
+
     nav ul li a {
         font-size: 18px;
     }
+
     #countdown {
-        font-size: 24px;
-        width: 30%;
-        height: 20%;
-        right: 5px;
+        font-size: 18px;
+        width: 90%;
+        text-align: center;
+    }
+    #sell .row {
+        flex-direction: column;
+        gap: 20px;
     }
 }
 
@@ -122,19 +470,38 @@ nav ul li a:hover {
     nav img {
         width: 80px;
         height: 80px;
-        transform: scale(1.2);
     }
-    nav ul li{
+
+    nav ul {
         width: 100%;
     }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
     nav ul li a {
         font-size: 16px;
-        
+        display: block;
+        padding: 10px;
     }
+
     #countdown {
-        font-size: 20px;
-        width: 40%;
-        right: 5px;
+        font-size: 16px;
+        padding: 6px;
+        width: 90%;
     }
-    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links ul {
+        display: block;
+    }
+
+    .footer-links ul li {
+        padding: 5px 0;
+    }
 }
