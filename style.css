@@ -83,13 +83,80 @@ span.percentage{
     font-size: 40px;
  
 }
-.details{
+.details {
     display: flex;
-
     justify-content: center;
-    /* gap: 10px; */
+    align-items: center;
+    gap: 15px; /* تقليل المسافة بين الصورتين */
     margin-top: 20px;
 }
+.details div{
+    border-radius: 10px;
+    box-shadow:9px 9px 15px rgba(123, 19, 164, 0.3);
+    padding-top: 20px;
+}
+.details h2{
+    font-weight: bold;
+}
+.details ul{
+    list-style: none;
+    padding: 20px;
+    font-weight: bold;
+    color: #494949;
+}
+.details li{
+
+    padding: 10px;
+}
+.details h4 {
+    background-color: #6f61cf;
+    width: 90%;
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Center text inside */
+    font-weight: bold;
+    padding: 5px;
+}
+.details h5{
+    font-weight: bold;
+    font-size: 33px;
+}
+.details p{
+    font-size: 33px;
+    font-weight: bold;
+}
+.details span{
+    font-size: 17px;
+    color: #8d8c8c;
+    font-weight: 500;
+    
+}
+.details .btnSeller{
+    background-color: #6f61cf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 25px;
+    margin-top: 20px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+.details .btnSeller:hover{
+    background-color: #fff;
+    color: #6f61cf;
+}
+.details .priceImage {
+    width: 65%; /* عرض كل صورة */
+    height: 35vh;
+    border-radius: 0;
+    padding-bottom: 20px;
+}
+
+
 .row{
     display: flex;
     /* justify-content: space-around; */
@@ -513,6 +580,7 @@ img.package{
     flex-direction: column;
     align-items: center;
 }
+
 
 /* لجعل التصميم متجاوبًا */
 @media (max-width: 992px) {
