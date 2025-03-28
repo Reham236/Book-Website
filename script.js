@@ -1,4 +1,4 @@
-function countdown(minutes) {
+function countdown(minutes,container_id) {
     let seconds = minutes * 60; // تحويل الدقائق إلى ثوانٍ
     let interval = setInterval(() => {
         if (seconds > 0) {
@@ -6,7 +6,7 @@ function countdown(minutes) {
             let displaySeconds = seconds % 60;
 
             // تنسيق العرض ليكون بالشكل "دقائق:ثواني"
-            document.getElementById("timer").innerHTML = `00:${displayMinutes}:${displaySeconds < 10 ? '0' : ''}${displaySeconds}`;
+            container_id.innerHTML = `00:${displayMinutes}:${displaySeconds < 10 ? '0' : ''}${displaySeconds}`;
             seconds--;
         } else {
             // إعادة العد التنازلي من 30 دقيقة
@@ -14,9 +14,12 @@ function countdown(minutes) {
         }
     }, 1000);
 }
+ let timer=document.getElementById("timer");
+ let countdownPrice=document.getElementById("countdownPrice")
 
 // الاستخدام:
-countdown(30); // يبدأ العد التنازلي من 30 دقيقة
+countdown(30,timer); // يبدأ العد التنازلي من 30 دقيقة
+countdown(30,countdownPrice); // يبدأ العد التنازلي من 30 دقيقة
 
 
 //Category Section

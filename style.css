@@ -45,7 +45,7 @@ nav ul li a:hover {
 }
 
 /* العداد */
-#countdown {
+#countdown,#countdownPrice {
     background-color: #6f61cf;
     color: white;
     font-size: 20px;
@@ -55,6 +55,40 @@ nav ul li a:hover {
     position: absolute;
     right: 20px;
     top: 10px;
+}
+#countdownPrice{
+    background-color: #4B0082;
+    font-size: 40px;
+    /* text-align: center; */
+    /* display: inline-block; */
+    width: 50%;
+    margin: auto;
+    position: static;
+}
+.offer{
+    background-color: #d1d1d1;
+}
+.offer h2{
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 100px;
+}
+.offer span{
+    /* color: #6f61cf; */
+    font-size: 25px;
+    font-weight: bold;
+}
+span.percentage{
+    font-size: 40px;
+ 
+}
+.details{
+    display: flex;
+
+    justify-content: center;
+    /* gap: 10px; */
+    margin-top: 20px;
 }
 .row{
     display: flex;
@@ -130,6 +164,19 @@ transform: scale(1.05);
 .category p {
     font-weight: bold;
     margin-top: 10px;
+}
+#categories h2{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: bold;
+}
+#categories small{
+    text-align: center;
+    /* font-size: 20px; */
+    color: #6f61cf;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 /* First Section*/
 
@@ -222,38 +269,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .hero {
-        padding: 40px 20px;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .text-content {
-        width: 100%;
-    }
-
-    .text-content h1 {
-        font-size: 1.8rem;
-    }
-
-    .text-content p {
-        font-size: 0.85rem;
-    }
-
-    .hero .btn {
-        font-size: 0.85rem;
-        padding: 7px 14px;
-        margin-left: 0;
-        margin-bottom: 20px;   
-    }
-
-    .image-container {
-        width: 100%;
-    }
-
-    .image-container img {
-        max-width: 100%;
-    }
+  
 }
 
 
@@ -412,6 +428,91 @@ footer {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل */
     animation: color-change .7s infinite alternate;
 }
+.customer {
+    position: relative;
+    height: 100vh;
+    color: white;
+    background-image: url('images/Customers.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.customer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(72, 49, 221, 0.6); 
+    z-index: 1;
+}
+
+/* علشان النصوص تفضل فوق الطبقة الشفافة */
+.customer * {
+    position: relative;
+    z-index: 2;
+}
+.customer h2 {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    /* padding-top: 100px; */
+}
+.customer span{
+    color: #d1d1d1;
+    font-size: 25px;
+}
+.stars {
+    display: flex;
+    justify-content: center; /* توسيط النجوم أفقيًا */
+    gap: 5px; /* مسافة صغيرة بين النجوم */
+    /* margin-top: 10px; */
+    font-size: 30px; /* حجم النجوم */
+}
+
+img.package{
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+    /* box-shadow: 9px 9px 15px rgba(123, 19, 164, 0.3); */
+}
+#FAQs{
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#FAQs p{
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    width:100% ;
+    height: 100%;
+    font-weight: bold;
+}
+#FAQs p:hover{
+    background-color: #6f61cf;
+    color: white;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+#FAQs .hidden-demoo {
+    width: 70%;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+
+   
+}
+.faq-item{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 70%;
+ margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+}
 
 /* لجعل التصميم متجاوبًا */
 @media (max-width: 992px) {
@@ -437,7 +538,7 @@ footer {
         margin: 5px 0;
     }
 
-    #countdown {
+    #countdown,#countdownPrice {
         position: static;
         width: 80%;
         margin-top: 10px;
@@ -455,7 +556,7 @@ footer {
         font-size: 18px;
     }
 
-    #countdown {
+    #countdown,#countdownPrice {
         font-size: 18px;
         width: 90%;
         text-align: center;
@@ -463,6 +564,39 @@ footer {
     #sell .row {
         flex-direction: column;
         gap: 20px;
+    }
+    .hero {
+        padding: 40px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        width: 100%;
+    }
+
+    .text-content h1 {
+        font-size: 1.8rem;
+        
+    }
+
+    .text-content p {
+        font-size: 0.85rem;
+    }
+
+    .hero .btn {
+        font-size: 0.85rem;
+        padding: 7px 14px;
+        margin-left: 0;
+        margin-bottom: 20px;   
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .image-container img {
+        max-width: 100%;
     }
 }
 
@@ -487,7 +621,7 @@ footer {
         padding: 10px;
     }
 
-    #countdown {
+    #countdown,#countdownPrice {
         font-size: 16px;
         padding: 6px;
         width: 90%;
