@@ -65,72 +65,86 @@ nav ul li a:hover {
     margin: auto;
     position: static;
 }
-.offer{
+.offer {
     background-color: #d1d1d1;
+    text-align: center;
 }
-.offer h2{
+
+.offer h2 {
     font-size: 50px;
     font-weight: bold;
-    text-align: center;
     padding-top: 100px;
 }
-.offer span{
-    /* color: #6f61cf; */
+
+.offer span {
     font-size: 25px;
     font-weight: bold;
 }
-span.percentage{
+
+span.percentage {
     font-size: 40px;
- 
 }
+
+/* ---- Responsive Pricing Details ---- */
 .details {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     justify-content: center;
     align-items: center;
-    gap: 15px; /* تقليل المسافة بين الصورتين */
+    gap: 15px; /* Reduce space between boxes */
     margin-top: 20px;
 }
-.details div{
+
+.details div {
+    width: 45%; /* Two columns on larger screens */
     border-radius: 10px;
-    box-shadow:9px 9px 15px rgba(123, 19, 164, 0.3);
-    padding-top: 20px;
+    box-shadow: 9px 9px 15px rgba(123, 19, 164, 0.3);
+    padding: 20px;
+    text-align: center;
 }
-.details h2{
+
+.details h2 {
     font-weight: bold;
 }
-.details ul{
+
+.details ul {
     list-style: none;
     padding: 20px;
     font-weight: bold;
     color: #494949;
 }
-.details li{
 
+.details li {
     padding: 10px;
 }
+
 .details h4 {
     background-color: #6f61cf;
     width: 90%;
-    margin: 0 auto; /* Center horizontally */
-    text-align: center; /* Center text inside */
+    margin: 0 auto;
+    text-align: center;
     font-weight: bold;
     padding: 5px;
 }
-.details h5{
+
+.details h5 {
     font-weight: bold;
     font-size: 33px;
 }
-.details p{
-    font-size: 33px;
+
+.details p {
+    font-size: 30px;
     font-weight: bold;
 }
-.details span{
+
+.details span {
     font-size: 17px;
     color: #8d8c8c;
     font-weight: 500;
-    
 }
-.details .btnSeller{
+
+/* ---- Buttons ---- */
+.details .btnSeller {
     background-color: #6f61cf;
     color: white;
     border: none;
@@ -138,22 +152,268 @@ span.percentage{
     font-size: 20px;
     font-weight: 600;
     border-radius: 25px;
-    margin-top: 20px;
     display: block;
-    margin: auto;
+    width: 80%;
+    margin: 20px auto;
     text-align: center;
     text-decoration: none;
-    margin-bottom: 30px;
 }
-.details .btnSeller:hover{
+
+.details .btnSeller:hover {
     background-color: #fff;
     color: #6f61cf;
 }
+
+/* ---- Images ---- */
 .details .priceImage {
-    width: 65%; /* عرض كل صورة */
-    height: 35vh;
+    width: 65%;
+    height: auto; /* Make height responsive */
     border-radius: 0;
     padding-bottom: 20px;
+}
+
+/* ---- 📱 Responsive Design (Mobile First) ---- */
+@media (max-width: 992px) {
+    .details div {
+        width: 80%; /* Single column on medium screens */
+    }
+}
+
+.instructions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+
+/* Wlcome Section */
+#welcome {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #d1d1d1;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 70px;
+}
+#welcome h2 {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#welcome img{
+    width: 90%;
+}
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #f8f8f8;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 90%;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.icon {
+    font-size: 24px;
+    color: #ffcc00;
+}
+
+.feature h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.feature p {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 16px;
+}
+
+/* ✅ Responsiveness */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .feature-box {
+        width: 100%;
+    }
+}
+/* friendlyBundle Section */
+/* ✅ الأساسيات */
+/* friendlyBundle Section */
+#friendlyBundle h2{
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+#friendlyBundle .contain{
+    display: flex;
+}
+.contain ul{
+    list-style-type: none;
+}
+.contain p{
+    font-size: 30px;
+    font-weight: bold;
+    
+   
+}
+.contain img{
+    width: 60%;
+}
+#friendlyBundle .Access{
+    display: flex;
+}
+#friendlyBundle .Access div{
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.Access h2{
+    margin-left: 0;
+    margin-top: 0;
+    text-align: left;
+    display: inline-block;
+    color: #4b46a4;
+    font-weight: bold;
+}
+.Access p:first-child{
+    font-weight: bold;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.Access img{
+    width: 65%;
+    margin-left: 50px;
+}
+.Access div ul{
+    list-style: none;
+    padding-left: 0;
+    font-size: 23px;
+   
+    /* display: inline-block;
+    margin-left: 20px; */
+}
+.Access div ul li{
+    margin-left: 0;
+    
+}
+.Access div ul i{
+    color: #4b46a4;
+    margin-right: 5px;
+    font-weight: bolder;
+} 
+/* ✅ **جعل التصميم متجاوبًا عبر Media Queries** */
+@media (max-width: 768px) {
+    .contain, .Access {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contain img, .Access img {
+        width: 90%;
+    }
+
+    .Access div {
+        text-align: center;
+    }
+
+    .Access ul {
+        text-align: left;
+        margin-left: 20px;
+    }
+}
+/* books-details Section */
+/* ✅ ضبط تنسيق القسم الأساسي */
+#books-details .Bonus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* ترك مسافة بين العناصر */
+    flex-wrap: wrap; /* السماح بالنزول لأسطر جديدة عند الحاجة */
+    text-align: left;
+    padding: 0px;
+    margin-left: 0;
+    margin-bottom: 30px;
+}
+
+/* ✅ تحسين عرض الصورة */
+#books-details .Bonus img {
+    width: 55%;
+    max-width: 500px; /*منع الصورة من أن تصبح ضخمة*/
+    height: auto;
+    border-radius: 10px; /* إضافة زوايا ناعمة */
+}
+
+/* ✅ تحسين عرض النصوص */
+.txtContainer {
+    max-width: 500px; /* منع تمدد النصوص */
+}
+
+.txtContainer h2 {
+    font-weight: bold;
+    font-size: 35px;
+    text-align: left;
+}
+
+.txtContainer hr {
+    width: 50%;
+    height: 5px;
+    background-color: #25023f;
+    border: none;
+    margin: 10px 0;
+}
+
+.txtContainer p {
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* ✅ جعل التصميم متجاوبًا مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    #books-details .Bonus {
+        flex-direction: column; /* جعل الصورة فوق النص */
+        text-align: center;
+    }
+
+    #books-details .Bonus img {
+        width: 80%; /* تكبير الصورة قليلاً على الجوال */
+        margin: 0 auto; /* توسيط الصورة */
+    }
+
+    .txtContainer {
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .txtContainer hr {
+        width: 80%;
+        margin: 10px auto;
+    }
 }
 
 
@@ -237,6 +497,14 @@ transform: scale(1.05);
     margin-top: 20px;
     font-size: 50px;
     font-weight: bold;
+}
+#categories p{
+   
+    font-size: 20px;
+    padding: 0 100px;
+    margin-top: 10px;
+    /* width: 50%; */
+    text-align: center;
 }
 #categories small{
     text-align: center;
@@ -335,9 +603,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
-  
-}
+
 
 
 .content {
@@ -665,6 +931,26 @@ img.package{
 
     .image-container img {
         max-width: 100%;
+    }
+    .details div {
+        width: 100%; /* Full width on small screens */
+    }
+    
+    .offer h2 {
+        font-size: 35px;
+    }
+    
+    .details h5, .details p {
+        font-size: 25px;
+    }
+    
+    .details .btnSeller {
+        font-size: 18px;
+        width: 90%;
+    }
+    
+    .details .priceImage {
+        width: 80%;
     }
 }
 
