@@ -177,29 +177,6 @@ button:hover {
         <p id="result"></p>
     </div>
 
-    <script>
-        let rating = 0;
-        document.querySelectorAll('.star').forEach(star => {
-            star.addEventListener('click', function() {
-                rating = this.getAttribute('data-value');
-                document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
-                for (let i = 0; i < rating; i++) {
-                    document.querySelectorAll('.star')[i].classList.add('active');
-                }
-            });
-        });
-
-        function submitReview() {
-            const username = document.getElementById('username').value;
-            const comment = document.getElementById('comment').value;
-            if (!username || !comment || rating === 0) {
-                document.getElementById('result').textContent = "Please fill all fields and select a rating!";
-                document.getElementById('result').style.color = "red";
-                return;
-            }
-            document.getElementById('result').textContent = `Thank you, ${username}! Your rating: ${rating} stars.`;
-            document.getElementById('result').style.color = "green";
-        }
-    </script>
+   <script src="rating.js"></script>
 </body>
 </html>

@@ -43,11 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // redirect to checkout page
-document.getElementById("buyBtn").addEventListener("click", function() {
-    window.location.href = "checkout.html";
-});
-Array.from(document.getElementsByClassName("btnSeller")).forEach((btn) => {
-    btn.addEventListener("click", function() {
-        window.location.href = "checkout.html";
-    });
-});
+// document.getElementById("buyBtn").addEventListener("click", function() {
+//     window.location.href = "checkout.html";
+// });
+// Array.from(document.getElementsByClassName("btnSeller")).forEach((btn) => {
+//     btn.addEventListener("click", function() {
+//         window.location.href = "checkout.html";
+//     });
+// });
