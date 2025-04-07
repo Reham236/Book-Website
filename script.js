@@ -15,12 +15,51 @@ function countdown(minutes,container_id) {
     }, 1000);
 }
  let timer=document.getElementById("timer");
- let countdownPrice=document.getElementById("countdownPrice")
+//  let countdownPrice=document.getElementById("countdownPrice")
 
 // الاستخدام:
 countdown(30,timer); // يبدأ العد التنازلي من 30 دقيقة
-countdown(30,countdownPrice); // يبدأ العد التنازلي من 30 دقيقة
+// countdown(30,countdownPrice); // يبدأ العد التنازلي من 30 دقيقة
 
+
+
+
+
+
+
+
+// Set the starting date (e.g., today)
+const startDate = new Date("2025-04-06");
+
+// Set the end date after 20 days
+const endDate = new Date(startDate);
+endDate.setDate(startDate.getDate() + 20);
+
+const countdownElement = document.getElementById("countdownPrice");
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = endDate - now;
+
+  if (diff <= 0) {
+    countdownElement.textContent = "The offer has ended!";
+    countdownElement.style.backgroundColor = "#555";
+    document.getElementById("offer").style.display = "none"; // Hide the offer section
+    clearInterval(updateCountdown); // Stop the countdown
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
+
+  countdownElement.textContent =
+    `Offer ends in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+updateCountdown(); // initial load
+setInterval(updateCountdown, 1000); // update every second
 
 //Category Section
 document.addEventListener("DOMContentLoaded", function () {
@@ -43,9 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // redirect to checkout page
-// document.getElementById("buyBtn").addEventListener("click", function() {
-//     window.location.href = "checkout.html";
-// });
+document.getElementById("buyBtn").addEventListener("click", function() {
+    window.location.href = "#price-details";
+});
 // Array.from(document.getElementsByClassName("btnSeller")).forEach((btn) => {
 //     btn.addEventListener("click", function() {
 //         window.location.href = "checkout.html";
