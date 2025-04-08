@@ -1,15 +1,15 @@
 function countdown(minutes,container_id) {
-    let seconds = minutes * 60; // تحويل الدقائق إلى ثوانٍ
+    let seconds = minutes * 60; 
     let interval = setInterval(() => {
         if (seconds > 0) {
             let displayMinutes = Math.floor(seconds / 60);
             let displaySeconds = seconds % 60;
 
-            // تنسيق العرض ليكون بالشكل "دقائق:ثواني"
+           
             container_id.innerHTML = `00:${displayMinutes}:${displaySeconds < 10 ? '0' : ''}${displaySeconds}`;
             seconds--;
         } else {
-            // إعادة العد التنازلي من 30 دقيقة
+           
             seconds = minutes * 60;
         }
     }, 1000);
@@ -17,9 +17,8 @@ function countdown(minutes,container_id) {
  let timer=document.getElementById("timer");
 //  let countdownPrice=document.getElementById("countdownPrice")
 
-// الاستخدام:
-countdown(30,timer); // يبدأ العد التنازلي من 30 دقيقة
-// countdown(30,countdownPrice); // يبدأ العد التنازلي من 30 دقيقة
+
+countdown(30,timer); 
 
 
 
@@ -28,8 +27,9 @@ countdown(30,timer); // يبدأ العد التنازلي من 30 دقيقة
 
 
 
-// Set the starting date (e.g., today)
-const startDate = new Date("2025-04-06");
+
+// Set the starting date 
+const startDate = new Date("2025-04-08");
 
 // Set the end date after 20 days
 const endDate = new Date(startDate);
@@ -44,8 +44,8 @@ function updateCountdown() {
   if (diff <= 0) {
     countdownElement.textContent = "The offer has ended!";
     countdownElement.style.backgroundColor = "#555";
-    document.getElementById("offer").style.display = "none"; // Hide the offer section
-    clearInterval(updateCountdown); // Stop the countdown
+    document.getElementById("offer").style.display = "none"; 
+    clearInterval(updateCountdown); 
     return;
   }
 
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     controls.forEach((control, index) => {
         const leftArrow = control.querySelector(".left-arrow");
         const rightArrow = control.querySelector(".right-arrow");
-        const slider = sliders[index]; // يربط الأسهم بالقسم الصحيح
+        const slider = sliders[index]; 
 
         rightArrow.addEventListener("click", () => {
             slider.scrollBy({ left: 500, behavior: "smooth" });
@@ -85,8 +85,16 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("buyBtn").addEventListener("click", function() {
     window.location.href = "#price-details";
 });
-// Array.from(document.getElementsByClassName("btnSeller")).forEach((btn) => {
-//     btn.addEventListener("click", function() {
-//         window.location.href = "checkout.html";
-//     });
-// });
+const originalPrice = 37;
+const discountedPrice = 27;
+
+
+function isOfferActive() {
+    const now = new Date();
+    return now < endDate;
+  }
+  
+  function getCurrentPrice() {
+    return isOfferActive() ? discountedPrice : originalPrice;
+  }
+  

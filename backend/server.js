@@ -15,31 +15,63 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/pay', async(req, res) => {
   try {
-      const url = await paypal.createOrder()
+
+    const {price}=req.body;
+    if (!price || isNaN(price)) {
+      return res.status(422).json({ error: "Invalid price value" });
+    }
+    
+      const url = await paypal.createOrder(price)
 
       res.json(url)
   } catch (error) {
       res.json('Error: ' + error)
   }
 })
-
 app.get('/complete-order', async (req, res) => {
   try {
-      console.log("Token:", req.query.token);
-      console.log("PayerID:", req.query.PayerID);
-      
-      const orderDetails = await paypal.getOrderDetails(req.query.token);
-      console.log("Order Details:", orderDetails);
+    const BOOK_LINK ="https://drive.google.com/file/d/1-ZwAUAYfrTMGa3TRh_KXaRE_QkVnInw_/view?pli=1"; 
+    const orderId = req.query.token; 
+    const orderDetails = await paypal.getOrderDetails(orderId);
 
-      if (orderDetails.status !== "APPROVED") {
-          return res.status(400).json({ error: "Order is not in an APPROVED state." });
-      }
+    if (orderDetails.status !== "APPROVED") {
+      return res.status(400).json({ error: "Order is not in an APPROVED state." });
+    }
 
-      const paymentResponse = await paypal.capturePayment(req.query.token);
-      return res.redirect('http://localhost:5500/sucess.html');
+    await paypal.capturePayment(orderId);
+    const payment=new Payment({
+   
+      orderId: orderId,
+      email: orderDetails.payer.email_address,
+      booksLinks: [BOOK_LINK] ,
+      plan: "Book Membership",
+      amount: orderDetails.purchase_units[0].amount.value,
+    });
+await payment.save();
+    console.log("Payment saved to database:", payment);
+    return res.redirect(`http://localhost:5500/success.html?orderId=${orderId}`);
   } catch (error) {
-      console.error("Error capturing payment:", error.response?.data || error.message);
-      res.status(500).json({ error: error.response?.data || error.message });
+    console.error("Error capturing payment:", error.response?.data || error.message);
+    res.status(500).json({ error: error.response?.data || error.message });
+  }
+});
+
+
+app.get("/get-book-link", async (req, res) => {
+  const { orderId } = req.query;
+  if (!orderId) {
+    return res.status(400).json({ error: "orderId is required" });
+  }
+
+  try {
+
+    const payment = await Payment.findOne({ orderId });
+    if (!payment) {
+      return res.status(404).json({ error: "No book link found for this order" });
+    }
+    res.json({ bookLink: payment.booksLinks[0] });
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
   }
 });
 

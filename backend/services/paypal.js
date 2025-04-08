@@ -1,4 +1,5 @@
 const axios = require('axios')
+const { parse } = require('dotenv')
 
 async function generateAccessToken() {
     const response = await axios({
@@ -10,7 +11,7 @@ async function generateAccessToken() {
             password: process.env.PAYPAL_SECRET
         }
     })
-    console.log("Generated Access Token:", response.data.access_token);
+console.log(response.data)
     return response.data.access_token
 }
 exports.getOrderDetails=async  (orderId) =>{
@@ -28,8 +29,9 @@ exports.getOrderDetails=async  (orderId) =>{
     return response.data;
 }
 
-exports.createOrder = async () => {
+exports.createOrder = async (price) => {
     const accessToken = await generateAccessToken()
+ price=parseInt(price);
 
     const response = await axios({
         url: process.env.PAYPAL_BASE_URL + '/v2/checkout/orders',
@@ -50,7 +52,7 @@ exports.createOrder = async () => {
                                 "quantity": 1,
                                 "unit_amount": {
                                     "currency_code": "USD",
-                                    "value": "100.00"
+                                    "value": price
                                 }
                             
                             
@@ -59,11 +61,11 @@ exports.createOrder = async () => {
 
                     amount: {
                         currency_code: 'USD',
-                        value: '100.00',
+                        value: price,
                         breakdown: {
                             item_total: {
                                 currency_code: 'USD',
-                                value: '100.00'
+                                value: price
                             }
                         }
                     }
@@ -79,14 +81,13 @@ exports.createOrder = async () => {
             }
         })
     })
-
+console.log(response.data)
     return response.data.links.find(link => link.rel === 'approve').href
 }
 
 exports.capturePayment = async (orderId) => {
     const accessToken = await generateAccessToken()
-console.log("capturing payment");
-console.log(orderId);
+
     const response = await axios({
         url: process.env.PAYPAL_BASE_URL + `/v2/checkout/orders/${orderId}/capture`,
         method: 'post',
@@ -95,6 +96,6 @@ console.log(orderId);
             'Authorization': 'Bearer ' + accessToken
         }
     })
-console.log(response);
+
     return response.data
 }
