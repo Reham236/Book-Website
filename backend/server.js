@@ -48,7 +48,7 @@ app.get('/complete-order', async (req, res) => {
       amount: orderDetails.purchase_units[0].amount.value,
     });
 await payment.save();
-    console.log("Payment saved to database:", payment);
+  
     return res.redirect(`${process.env. FRONT_URL}/success.html?orderId=${orderId}`);
   } catch (error) {
     console.error("Error capturing payment:", error.response?.data || error.message);
@@ -110,5 +110,6 @@ app.get("/reviews", async (req, res) => {
 
 
 app.listen(3000, () => {
-    mongoose.connect("mongodb://localhost:27017/paypalDB");
+    mongoose.connect(process.env.MONGODB_URI,
+       { useNewUrlParser: true, useUnifiedTopology: true })
     console.log("Server running on port 3000")});
