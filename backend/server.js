@@ -20,7 +20,7 @@ app.post('/pay', async(req, res) => {
     if (!price || isNaN(price)) {
       return res.status(422).json({ error: "Invalid price value" });
     }
-    
+
       const url = await paypal.createOrder(price)
 
       res.json(url)
@@ -49,7 +49,7 @@ app.get('/complete-order', async (req, res) => {
     });
 await payment.save();
     console.log("Payment saved to database:", payment);
-    return res.redirect(`http://localhost:5500/success.html?orderId=${orderId}`);
+    return res.redirect(`${process.env. FRONT_URL}/success.html?orderId=${orderId}`);
   } catch (error) {
     console.error("Error capturing payment:", error.response?.data || error.message);
     res.status(500).json({ error: error.response?.data || error.message });
@@ -77,7 +77,7 @@ app.get("/get-book-link", async (req, res) => {
 
 
 app.get('/cancel-order', (req, res) => {
-  res.redirect('http://localhost:5500/failure.html');
+  res.redirect(`${process.env. FRONT_URL}/failure.html`);
 })
 
 app.post("/reviews", async (req, res) => { 
